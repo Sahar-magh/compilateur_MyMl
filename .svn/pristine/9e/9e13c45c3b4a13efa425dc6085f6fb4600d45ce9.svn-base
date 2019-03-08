@@ -1,0 +1,67 @@
+%option noyywrap
+/* avoid dependency with library fl */
+
+%{
+#include "y.tab.h"
+#include "Table_des_symboles.h"
+#include <stdio.h>
+
+%}
+
+whitespace          [ \t\r\n\f]+
+
+digit               [0-9]
+alpha               [a-zA-Z]
+alphanum            [a-zA-Z0-9]
+
+integer             [[:digit:]]+
+float               [[:digit:]]+\.[[:digit:]]*
+boolean             "true"|"false"
+
+escape              \\([\\"'ntbr ])
+string              \"({escape}|[^"\\])*\"
+
+identifier          [[:alpha:]][[:alnum:]_]*
+
+%%
+"++"         { printf("lex : ++ \n");return CONCAT;}
+"+"          { return PLUS;}
+"-"          { printf("lex : - \n");return MOINS;}
+"*"          { printf("lex : * \n");return MULT;}
+"/"          { printf("lex : / \n");return DIV;}
+"="          {return EQ;}
+"<"          { printf("lex : < \n");return ISLT;}
+">"          { printf("lex : > \n");return ISGT;}
+"<="         { printf("lex : <= \n");return ISLEQ;}
+">="         { printf("lex : >= \n");return ISGEQ;}
+"=="         { printf("lex : == \n");return ISEQ;}
+
+"let"        { printf("lex : LET \n");return LET;}
+"in"         { printf("lex : in \n");return IN;}
+"if"         { printf("lex : if \n");return IF;}
+"then"       { printf("lex : then \n");return THEN;}
+"else"       { printf("lex : else \n");return ELSE;}
+
+
+
+"("          { printf("lex : ( \n");return LPAR;}
+")"          { printf("lex : ) \n");return RPAR;}
+"["          { printf("lex : [ \n");return LBR;}
+"]"          { printf("lex : ] \n");return RBR;}
+","          { printf("lex : , \n");return VIR;}
+";"          { return PV;}
+
+
+
+{boolean}  {yylval.val.type=Bool;yylval.val.value.valb= atoi(yytext);return BOOL;}
+{float}      {yylval.val.type = Float;
+yylval.val.value.valf = atof (yytext);
+
+                   ;return FLOAT; }
+{integer}    {yylval.val.type = Int;
+           yylval.val.value.vali = atoi (yytext);
+           
+           return NUM;return NUM;}
+{identifier} {yylval.sid = string_to_sid(yytext);;return ID;}
+{string}     {yylval.sid = string_to_sid(yytext);printf("lex : %s \n", yytext);printf("lex : String \n");return STRING;}
+{whitespace} ;

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+make #compiler le compilateur
+
+#fichier compilé par myml
+./myml  < $1  
+
+ gcc -o executable  fichier_compile_compilateur.c #compiler de fichier compilé par myml
+
+
+
+./executable  

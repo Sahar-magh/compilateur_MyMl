@@ -1,0 +1,131 @@
+
+#include "Attribut.h"
+#include <stdio.h>
+
+/* HERE COMES YOUR CODE */
+
+symb_value_type iseq(symb_value_type x, symb_value_type y);
+
+
+
+
+
+
+symb_value_type plus_svt(symb_value_type x, symb_value_type y) {
+  symb_value_type result;
+  switch (x.type)
+    {
+    case Int:
+      switch (y.type)
+	{
+	case Int:
+	  // Int + Int
+	  result.value.vali = x.value.vali + y.value.vali;
+	  result.type = Int;
+	  printf("<exp> de type <int> vaut %d\n",result);
+	  break;
+	case Float:
+	  // Int + Float
+	  result.value.valf = x.value.vali + y.value.valf;
+	  result.type = Float;
+	  printf("<exp> de type <Float> vaut %f\n",result);
+	}
+      break;
+
+    case Float:
+      switch (y.type) {
+      case Int:
+	// Float + Int
+	result.value.valf = x.value.valf + y.value.vali;
+	result.type = Float;
+	printf("<exp> de type <Float> vaut %f\n",result);
+	break;
+      case Float:
+	// Float + Float
+	result.value.valf = x.value.valf + y.value.valf;
+	result.type = Float;
+	printf("<exp> de type <Float> vaut %f\n",result);
+      }
+      }
+  return result;
+}
+
+
+symb_value_type mult_svt(symb_value_type x, symb_value_type y) {
+  //symb_value_type result;
+  /*switch (x.type)
+    {
+    case Int:
+      switch (y.type)
+	{
+	case Int:
+	  // Int * Int
+	  result.value.vali = x.value.vali * y.value.vali;
+	  result.type = Int;
+	  break;
+	case Float:
+	  // Int * Float
+	  result.value.valf = x.value.vali * y.value.valf;
+	  result.type = Float;
+	}
+      break;
+
+    case Float:
+      switch (y.type) {
+      case Int:
+	// Float * Int
+	result.value.valf = x.value.valf * y.value.vali;
+	result.type = Float;
+	break;
+      case Float:
+	// Float * Float
+	result.value.valf = x.value.valf + y.value.valf;
+	result.type = Float;
+      }
+      }*/
+  // return result;
+}
+
+symb_value_type minus_svt(symb_value_type x, symb_value_type y) {
+  symb_value_type result;
+  /*switch (x.type)
+    {
+    case Int:
+      switch (y.type)
+	{
+	case Int:
+	  // Int - Int
+	  result.value.vali = x.value.vali - y.value.vali;
+	  result.type = Int;
+	  break;
+	case Float:
+	  // Int - Float
+	  result.value.valf = x.value.vali - y.value.valf;
+	  result.type = Float;
+	}
+      break;
+
+    case Float:
+      switch (y.type) {
+      case Int:
+	// Float - Int
+	result.value.valf = x.value.valf - y.value.vali;
+	result.type = Float;
+	break;
+      case Float:
+	// Float - Float
+	result.value.valf = x.value.valf - y.value.valf;
+	result.type = Float;
+      }
+      }*/
+    return result;
+}
+
+/*symb_value_type div_svt(symb_value_type x, symb_value_type y) {
+  symb_value_type result;
+  return result;
+}
+/*
+ *  Attribut.c
+ *
+ */

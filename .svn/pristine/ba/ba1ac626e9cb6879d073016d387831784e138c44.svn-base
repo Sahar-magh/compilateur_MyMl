@@ -1,0 +1,22 @@
+? lex : INT 
+yacc : atom_exp->NUM 
+1
+yacc : exp->atom_exp 
+lex : + 
+lex : INT 
+yacc : atom_exp->NUM 
+9
+yacc : exp->atom_exp 
+lex : ; 
+yacc : arith_exp -> exp + exp
+le resultat 10
+yacc : exp->arith_exp 
+yacc : inst-->exp
+le resultat est 10
+yacc : prog-->inst PV 
+lex : ID 
+yacc : exp->atom_exp 
+yacc : inst-->exp
+le resultat est 9
+
+syntax error!

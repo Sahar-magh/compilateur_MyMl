@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#make clean 
+make #compiler le compilateur
+
+
+#s'il y a pas de fichier en argument ou y a trop de fichier tests , donner juste un 
+if [ $# -ne 1 ]
+then
+    
+    echo Donner un fichier test, un seul
+else
+
+    #executable du compilateur myml
+    ./myml  < $1  
+
+    gcc -o executable  test.c #compiler de fichier compilé par myml
+
+    ./executable  
+
+fi
+
+
+
